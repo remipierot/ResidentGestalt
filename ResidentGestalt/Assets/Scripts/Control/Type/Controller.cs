@@ -6,10 +6,10 @@ namespace Control.Type
 	{
 		void Update()
 		{
-			Up = Input.GetButtonDown("Up");
-			Down = Input.GetButtonDown("Down");
-			Left = Input.GetButtonDown("Left");
-			Right = Input.GetButtonDown("Right");
+			Up = Input.GetButtonDown("Y") && !A && !X && !B;
+			Down = Input.GetButtonDown("A") && !Y && !X && !B;
+			Left = Input.GetButtonDown("X") && !Y && !A && !B;
+			Right = Input.GetButtonDown("B") && !Y && !A && !X;
 		}
 	}
 }
