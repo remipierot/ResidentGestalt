@@ -26,7 +26,6 @@ public class KeyDisplay : MonoBehaviour
 		}
 	}
 
-	// Use this for initialization
 	void Start ()
 	{
 		if(_Instance == null)
@@ -39,7 +38,7 @@ public class KeyDisplay : MonoBehaviour
 		}
 	}
 
-	public static void RandomizePositionsAndShow(KEY key)
+	public static void RandomizePositions()
 	{
 		int firstKey = Random.Range(0, 4);
 		int secondKey = Random.Range(0, 4);
@@ -63,13 +62,58 @@ public class KeyDisplay : MonoBehaviour
 			fourthKey = Random.Range(0, 4);
 		}
 
-		_PlaceSingleKey(KEY.UP, firstKey, key == KEY.UP);
-		_PlaceSingleKey(KEY.DOWN, secondKey, key == KEY.DOWN);
-		_PlaceSingleKey(KEY.LEFT, thirdKey, key == KEY.LEFT);
-		_PlaceSingleKey(KEY.RIGHT, fourthKey, key == KEY.RIGHT);
+		_PlaceSingleKey(KEY.UP, firstKey);
+		_PlaceSingleKey(KEY.DOWN, secondKey);
+		_PlaceSingleKey(KEY.LEFT, thirdKey);
+		_PlaceSingleKey(KEY.RIGHT, fourthKey);
 	}
 
-	private static void _PlaceSingleKey(KEY key, int newId, bool toShow)
+	public static KEY FakeKey(KEY key)
+	{
+		GameObject keyObject = _Instance.Up;
+
+		switch (key)
+		{
+			case KEY.UP:
+				keyObject = _Instance.Up;
+				break;
+			case KEY.DOWN:
+				keyObject = _Instance.Down;
+				break;
+			case KEY.LEFT:
+				keyObject = _Instance.Left;
+				break;
+			case KEY.RIGHT:
+				keyObject = _Instance.Right;
+				break;
+		}
+
+		float distToUp = (keyObject.transform.position - _Instance.UpEmpty.transform.position).magnitude;
+		float distToDown = (keyObject.transform.position - _Instance.DownEmpty.transform.position).magnitude;
+		float distToLeft = (keyObject.transform.position - _Instance.LeftEmpty.transform.position).magnitude;
+		float distToRight = (keyObject.transform.position - _Instance.RightEmpty.transform.position).magnitude;
+
+		if(distToUp < distToDown && distToUp < distToLeft && distToUp < distToRight)
+		{
+			return KEY.UP;
+		}
+		else if (distToDown < distToUp && distToDown < distToLeft && distToDown < distToRight)
+		{
+			return KEY.DOWN;
+		}
+		else if (distToLeft < distToUp && distToLeft < distToDown && distToLeft < distToRight)
+		{
+			return KEY.LEFT;
+		}
+		else if (distToRight < distToUp && distToRight < distToDown && distToRight < distToLeft)
+		{
+			return KEY.RIGHT;
+		}
+
+		return KEY.INVALID;
+	}
+
+	private static void _PlaceSingleKey(KEY key, int newId)
 	{
 		GameObject keyObject = _Instance.Up;
 
@@ -108,25 +152,6 @@ public class KeyDisplay : MonoBehaviour
 		Vector3 truePosition = keyObject.transform.localPosition;
 		truePosition.z = 0.0f;
 		keyObject.transform.localPosition = truePosition;
-
-		if(toShow)
-		{
-			switch (newId)
-			{
-				case 0:
-					_Instance.UpEmpty.SetActive(false);
-					break;
-				case 1:
-					_Instance.DownEmpty.SetActive(false);
-					break;
-				case 2:
-					_Instance.LeftEmpty.SetActive(false);
-					break;
-				case 3:
-					_Instance.RightEmpty.SetActive(false);
-					break;
-			}
-		}
 	}
 
 	public static void ResetPositions()
@@ -143,5 +168,26 @@ public class KeyDisplay : MonoBehaviour
 		_Instance.DownEmpty.SetActive(true);
 		_Instance.LeftEmpty.SetActive(true);
 		_Instance.RightEmpty.SetActive(true);
+	}
+
+	public static void Show(KEY key)
+	{
+		KEY k = FakeKey(key);
+
+		switch(k)
+		{
+			case KEY.UP:
+				_Instance.UpEmpty.SetActive(false);
+				break;
+			case KEY.DOWN:
+				_Instance.DownEmpty.SetActive(false);
+				break;
+			case KEY.LEFT:
+				_Instance.LeftEmpty.SetActive(false);
+				break;
+			case KEY.RIGHT:
+				_Instance.RightEmpty.SetActive(false);
+				break;
+		}
 	}
 }

@@ -95,7 +95,8 @@ public class GameManager : MonoBehaviour {
 
 			if (_CurrentKey != KEY.INVALID && !KeyDisplay.IsDisplayed)
 			{
-				KeyDisplay.RandomizePositionsAndShow(_CurrentKey);
+				KeyDisplay.RandomizePositions();
+				KeyDisplay.Show(_CurrentKey);
 			}
 
 			if (ControlManager.InputPressed)
