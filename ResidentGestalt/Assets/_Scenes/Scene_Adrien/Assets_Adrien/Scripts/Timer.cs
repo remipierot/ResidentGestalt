@@ -6,10 +6,11 @@ using TMPro;
 public class Timer : MonoBehaviour {
 
 	float time_to_attain = 5000.0f;
-	float t = 0;
+	public float time_left = 0;
 	float ratio = 0.0f;
 	float last_time = 0.0f;
-	bool running = true;
+	bool running = false;
+	public bool oot = false;
 
 	// Use this for initialization
 	void Start () {
@@ -20,14 +21,12 @@ public class Timer : MonoBehaviour {
 	void Update() {
 
 		if (running) {
-			t = (Time.time * 1000) - last_time;
-			ratio = t / time_to_attain;
+			time_left = (Time.time * 1000) - last_time;
+			ratio = time_left / time_to_attain;
 			GetComponent<Renderer> ().material.SetFloat ("__Cutoff", ratio);
-			if (t >= time_to_attain) {
+			if (time_left >= time_to_attain) {
 				running = false;
-
-				// DEBUG
-				newEvent (time_to_attain);	
+				oot = true;
 			}
 		}
 	}
@@ -35,8 +34,10 @@ public class Timer : MonoBehaviour {
 	public void newEvent(float tim) {
 		time_to_attain = tim;
 		last_time = Time.time * 1000;
-		t = 0.0f;
+		time_left = 0.0f;
 		ratio = 0.0f;
+		running = true;
+		oot = false;
 		GetComponent<Renderer> ().material.SetFloat ("__Cutoff", 0.0f);
 	}
 

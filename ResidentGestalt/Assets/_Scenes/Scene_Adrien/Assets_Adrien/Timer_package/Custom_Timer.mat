@@ -31,4 +31,4 @@ Material:
     - __Cutoff: 0
     m_Colors:
     - _EmptyColor: {r: 0, g: 0, b: 0, a: 0}
-    - _TimerColor: {r: 1, g: 0.7941177, b: 0, a: 1}
+    - _TimerColor: {r: 1, g: 0.88235295, b: 0, a: 1}
