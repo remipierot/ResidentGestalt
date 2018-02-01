@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using Control;
 
 public class GameManager : MonoBehaviour {
 
@@ -16,7 +15,9 @@ public class GameManager : MonoBehaviour {
 
 	public bool nik = false;
 
-//	public DatesBehavior currentDateBehavior;
+	private KEY _CurrentKey { get; set; }
+
+	//	public DatesBehavior currentDateBehavior;
 
 	public DatesBehavior currentDateBehavior
 	{  
@@ -37,6 +38,13 @@ public class GameManager : MonoBehaviour {
 			DatesBehavior tmpDatesBehavior = Dates [(currentDateIndex + i + 1) % Dates.Count].GetComponent<DatesBehavior> ();
 			tmpDatesBehavior.setDestination (fileDattente [i].position);
 		}
+
+		if (!GetComponent<ControlManager>())
+		{
+			gameObject.AddComponent<ControlManager>();
+		}
+
+		_CurrentKey = KEY.INVALID;
 	}
 
 	// Update is called once per frame
@@ -44,9 +52,31 @@ public class GameManager : MonoBehaviour {
 
 		if (currentDateBehavior.destinationReached) 
 		{
+			//On tire une touche au hasard si besoin
+			if (_CurrentKey == KEY.INVALID && !nik)
+			{
+				_CurrentKey = (KEY)Random.Range(0, System.Enum.GetValues(typeof(KEY)).Length - 1);
+			}
 
-			//On affiche des touche et on fait des trucs
+			if (_CurrentKey != KEY.INVALID)
+			{
+				//Montrer l'input voulu
+			}
 
+			if (ControlManager.InputPressed)
+			{
+				// Pression sur la bonne touche
+				if (ControlManager.IsKeyPressed(_CurrentKey))
+				{
+					_CurrentKey = KEY.INVALID;
+				}
+				// Pression sur une mauvaise touche
+				else
+				{
+					_CurrentKey = KEY.INVALID;
+					nik = true;
+				}
+			}
 
 			if (!nik) 
 			{
