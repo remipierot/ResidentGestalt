@@ -38,7 +38,4 @@ public class DatesBehavior : MonoBehaviour
 		destinationReached = false;
 		destinationChanged = true;
 	}
-
-
-
 }
