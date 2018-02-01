@@ -28,10 +28,7 @@ public class GameManager : MonoBehaviour {
 
 	public AudioSource gauche;
 	public AudioSource droite;
-	public AudioClip gaucheAdir;
-	public AudioClip droiteAdir;
-	public AudioClip hautAdir;
-	public AudioClip basAdir;
+	public AudioClip[] sounds_list;
 
 
 	//	public DatesBehavior currentDateBehavior;
@@ -76,6 +73,24 @@ public class GameManager : MonoBehaviour {
 			{
 				_CurrentKey = (KEY)Random.Range(0, System.Enum.GetValues(typeof(KEY)).Length - 1);
 				main_timer.newEvent (time_max);
+
+				// SON
+				int rand_son = Random.Range (0, sounds_list.Length);
+				int rand_source = Random.Range (0, 3);
+				if (rand_source == 0) {
+					gauche.clip = sounds_list [rand_son];
+					gauche.Play ();
+				}
+				else if (rand_source == 1) {
+					droite.clip = sounds_list [rand_son];	
+					droite.Play ();				
+				}
+				else if (rand_source == 2) {
+					gauche.clip = sounds_list [rand_son];
+					droite.clip = sounds_list [rand_son];	
+					gauche.Play ();		
+					droite.Play ();							
+				}
 			}
 
 			if (_CurrentKey != KEY.INVALID && !KeyDisplay.IsDisplayed)
