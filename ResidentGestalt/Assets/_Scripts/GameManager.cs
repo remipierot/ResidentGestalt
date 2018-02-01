@@ -7,38 +7,63 @@ public class GameManager : MonoBehaviour {
 
 
 	public List<GameObject> Dates;
-	public List<NavMeshAgent> NavMeshes;
 
 	public Transform tableDate;
 	public Transform outside;
 
-	public int currentDate = 0;
+	public int currentDateIndex = 0;
 
-	public int test = 0;
+	public bool nik = false;
+
+//	public DatesBehavior currentDateBehavior;
+
+	public DatesBehavior currentDateBehavior
+	{  
+		get
+		{
+			return Dates [currentDateIndex].GetComponent<DatesBehavior> ();
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
 
-		currentDate = 0;
-		dateGoTo (currentDate, tableDate.position);
+		currentDateIndex = 0;	
+		currentDateBehavior.setDestination (tableDate.position);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
+		if (currentDateBehavior.destinationReached) 
+		{
 
-		dateGoTo (currentDate, tableDate.position);
-		if (NavMeshes [currentDate].isStopped)
-			test = 1;
-		else
-			test = 2;
+			//On affiche des touche et on fait des trucs
 
 
-	}
+			if (!nik) 
+			{
+				//OnContinue d'afficher les touches 
+
+			}
+			else 
+			{
+				//Il perd patience
+				currentDateBehavior.patience--;
 
 
-	void dateGoTo(int indexDate, Vector3 position)
-	{
-		NavMeshes [indexDate].SetDestination (position);
-	}
+				if(currentDateBehavior.patience <= 0)
+				{
+					currentDateBehavior.setDestination (outside.position); // Il Sort //Le Date se suicide
+
+					//On change de Date // Le Date n'est plus en place				
+					currentDateIndex++;
+
+					//Le Date suivant commence a bouger
+					currentDateBehavior.setDestination(tableDate.position);
+					nik = false;
+				}
+			}
+		}
+	}		
 }

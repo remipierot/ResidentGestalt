@@ -233,14 +233,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 23709095113401290, guid: 65419d24778be734f8f2f60612aac4e1,
+    - target: {fileID: 114738055795369986, guid: 65419d24778be734f8f2f60612aac4e1,
         type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0b12e0e17c8ad6f40aec42212f5fc480, type: 2}
-    - target: {fileID: 4931302389247196, guid: 65419d24778be734f8f2f60612aac4e1, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
+      propertyPath: destinationReachedTreshold
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65419d24778be734f8f2f60612aac4e1, type: 2}
@@ -248,11 +244,6 @@ Prefab:
 --- !u!1 &55481636 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1277471551347948, guid: 65419d24778be734f8f2f60612aac4e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 55481634}
---- !u!195 &55481637 stripped
-NavMeshAgent:
-  m_PrefabParentObject: {fileID: 195180494373404040, guid: 65419d24778be734f8f2f60612aac4e1,
     type: 2}
   m_PrefabInternal: {fileID: 55481634}
 --- !u!1 &318094913
@@ -307,7 +298,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 403154819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eddce51f74e80a54dbfba9bc2485af47, type: 3}
+  m_Script: {fileID: 11500000, guid: 145a93df85d46464680a3689f059ea64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Dates:
@@ -315,14 +306,11 @@ MonoBehaviour:
   - {fileID: 1416539961}
   - {fileID: 912554075}
   - {fileID: 1778212900}
-  NavMeshes:
-  - {fileID: 55481637}
-  - {fileID: 1416539962}
-  - {fileID: 912554076}
-  - {fileID: 1778212901}
   tableDate: {fileID: 318094914}
   outside: {fileID: 1096052534}
-  currentDate: 0
+  currentDateIndex: 0
+  destinationReachedTreshold: 2
+  isCurrentDateSit: 0
 --- !u!4 &403154821
 Transform:
   m_ObjectHideFlags: 0
@@ -494,11 +482,6 @@ Prefab:
 --- !u!1 &912554075 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1277471551347948, guid: 65419d24778be734f8f2f60612aac4e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 912554073}
---- !u!195 &912554076 stripped
-NavMeshAgent:
-  m_PrefabParentObject: {fileID: 195180494373404040, guid: 65419d24778be734f8f2f60612aac4e1,
     type: 2}
   m_PrefabInternal: {fileID: 912554073}
 --- !u!1 &1062931543
@@ -674,17 +657,17 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23709095113401290, guid: 65419d24778be734f8f2f60612aac4e1,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aa4288db93eabab40bb3e3dc2edcb0a5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65419d24778be734f8f2f60612aac4e1, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1416539961 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1277471551347948, guid: 65419d24778be734f8f2f60612aac4e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1416539959}
---- !u!195 &1416539962 stripped
-NavMeshAgent:
-  m_PrefabParentObject: {fileID: 195180494373404040, guid: 65419d24778be734f8f2f60612aac4e1,
     type: 2}
   m_PrefabInternal: {fileID: 1416539959}
 --- !u!1 &1667696229
@@ -850,11 +833,6 @@ Prefab:
 --- !u!1 &1778212900 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1277471551347948, guid: 65419d24778be734f8f2f60612aac4e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1778212898}
---- !u!195 &1778212901 stripped
-NavMeshAgent:
-  m_PrefabParentObject: {fileID: 195180494373404040, guid: 65419d24778be734f8f2f60612aac4e1,
     type: 2}
   m_PrefabInternal: {fileID: 1778212898}
 --- !u!1 &1807291992

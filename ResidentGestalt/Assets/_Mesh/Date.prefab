@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 136974695235295906}
   - component: {fileID: 23709095113401290}
   - component: {fileID: 195180494373404040}
+  - component: {fileID: 114738055795369986}
   m_Layer: 0
   m_Name: Date
   m_TagString: Date
@@ -37,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277471551347948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.025, y: 1.01, z: 0.67}
-  m_LocalScale: {x: 0.1918833, y: 1, z: 1}
+  m_LocalPosition: {x: -20.79389, y: 1.05, z: 2.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: aa4288db93eabab40bb3e3dc2edcb0a5, type: 2}
+  - {fileID: 2100000, guid: 0b12e0e17c8ad6f40aec42212f5fc480, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,6 +85,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277471551347948}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114738055795369986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1277471551347948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ab4472ced58c7489f6b90ae9cad485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patience: 0
+  myDestination: {fileID: 0}
+  destinationReached: 1
+  destinationChanged: 0
+  destinationReachedTreshold: 2
 --- !u!136 &136974695235295906
 CapsuleCollider:
   m_ObjectHideFlags: 1
