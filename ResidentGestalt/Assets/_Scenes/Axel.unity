@@ -354,7 +354,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.2108562
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 54604663873056644, guid: 98413744ec30bd34a8a22fc32d36f1a5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 98413744ec30bd34a8a22fc32d36f1a5, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &242186543 stripped
@@ -394,7 +395,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 4.35
+  m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
