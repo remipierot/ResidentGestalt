@@ -26,6 +26,14 @@ public class GameManager : MonoBehaviour {
 	int score = 0;
 	int high_score = 0;
 
+	public AudioSource gauche;
+	public AudioSource droite;
+	public AudioClip gaucheAdir;
+	public AudioClip droiteAdir;
+	public AudioClip hautAdir;
+	public AudioClip basAdir;
+
+
 	//	public DatesBehavior currentDateBehavior;
 
 	public DatesBehavior currentDateBehavior
