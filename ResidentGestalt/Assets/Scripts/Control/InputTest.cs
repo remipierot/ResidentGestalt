@@ -1,64 +1,39 @@
 ﻿using UnityEngine;
-using Control.Type;
 
 namespace Control
 {
 	public class InputTest : MonoBehaviour
 	{
-		private Controls controller;
-		private Controls keyboard;
-
 		private void Start()
 		{
-			controller = gameObject.AddComponent<Controller>();
-			keyboard = gameObject.AddComponent<Keyboard>();
+			if(!GetComponent<ControlManager>())
+			{
+				gameObject.AddComponent<ControlManager>();
+			}
 		}
 
 		private void Update()
 		{
-			if (controller.InputPressed)
+			if (ControlManager.InputPressed)
 			{
-				if (controller.Up)
+				if (ControlManager.Up)
 				{
-					Debug.LogError("CONTROLLER - Up");
+					Debug.LogError("Up");
 				}
 
-				if (controller.Down)
+				if (ControlManager.Down)
 				{
-					Debug.LogError("CONTROLLER - Down");
+					Debug.LogError("Down");
 				}
 
-				if (controller.Left)
+				if (ControlManager.Left)
 				{
-					Debug.LogError("CONTROLLER - Left");
+					Debug.LogError("Left");
 				}
 
-				if (controller.Right)
+				if (ControlManager.Right)
 				{
-					Debug.LogError("CONTROLLER - Right");
-				}
-			}
-
-			if (keyboard.InputPressed)
-			{
-				if (keyboard.Up)
-				{
-					Debug.LogError("KEYBOARD - Up");
-				}
-
-				if (keyboard.Down)
-				{
-					Debug.LogError("KEYBOARD - Down");
-				}
-
-				if (keyboard.Left)
-				{
-					Debug.LogError("KEYBOARD - Left");
-				}
-
-				if (keyboard.Right)
-				{
-					Debug.LogError("KEYBOARD - Right");
+					Debug.LogError("Right");
 				}
 			}
 		}

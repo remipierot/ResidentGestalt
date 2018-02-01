@@ -13,13 +13,5 @@ namespace Control.Type
 		public bool A { get { return Down; } }
 		public bool X { get { return Left; } }
 		public bool B { get { return Right; } }
-
-		public bool InputPressed
-		{
-			get
-			{
-				return Up || Left || Down || Right;
-			}
-		}
 	}
 }
