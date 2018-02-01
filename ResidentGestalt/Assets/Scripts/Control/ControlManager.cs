@@ -3,6 +3,15 @@ using Control.Type;
 
 namespace Control
 {
+	public enum KEY
+	{
+		UP,
+		DOWN,
+		LEFT,
+		RIGHT,
+		INVALID
+	}
+
 	public class ControlManager : MonoBehaviour
 	{
 		private static Controller _Controller;
@@ -55,6 +64,29 @@ namespace Control
 			{
 				return (Up || Down || Left || Right) && _SecondsFromLastPressedTime > 0.25f;
 			}
+		}
+
+		public static bool IsKeyPressed(KEY key)
+		{
+			bool pressed = false;
+
+			switch(key)
+			{
+				case KEY.UP:
+					pressed = Up;
+					break;
+				case KEY.DOWN:
+					pressed = Down;
+					break;
+				case KEY.LEFT:
+					pressed = Left;
+					break;
+				case KEY.RIGHT:
+					pressed = Right;
+					break;
+			}
+
+			return pressed;
 		}
 
 		private void Start()
