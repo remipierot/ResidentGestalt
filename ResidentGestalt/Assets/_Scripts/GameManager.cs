@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour {
 			if (_CurrentKey == KEY.INVALID && !nik)
 			{
 				_CurrentKey = (KEY)Random.Range(0, System.Enum.GetValues(typeof(KEY)).Length - 1);
-				Debug.Log (_CurrentKey);
 				main_timer.newEvent (time_max);
 			}
 
@@ -97,6 +96,7 @@ public class GameManager : MonoBehaviour {
 			else if (main_timer.oot) {
 				nik = true;
 				_CurrentKey = KEY.INVALID;
+				KeyDisplay.HideAll();
 			}
 
 			if (!nik) 
