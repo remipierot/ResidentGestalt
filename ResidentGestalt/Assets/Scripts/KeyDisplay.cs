@@ -19,9 +19,9 @@ public class KeyDisplay : MonoBehaviour
 	{
 		get
 		{
-			return !_Instance.UpEmpty.activeInHierarchy && 
-				!_Instance.DownEmpty.activeInHierarchy && 
-				!_Instance.LeftEmpty.activeInHierarchy && 
+			return !_Instance.UpEmpty.activeInHierarchy || 
+				!_Instance.DownEmpty.activeInHierarchy || 
+				!_Instance.LeftEmpty.activeInHierarchy || 
 				!_Instance.RightEmpty.activeInHierarchy;
 		}
 	}
@@ -39,7 +39,7 @@ public class KeyDisplay : MonoBehaviour
 		}
 	}
 
-	public static void RandomizePositions()
+	public static void RandomizePositionsAndShow(KEY key)
 	{
 		int firstKey = Random.Range(0, 4);
 		int secondKey = Random.Range(0, 4);
@@ -63,13 +63,13 @@ public class KeyDisplay : MonoBehaviour
 			fourthKey = Random.Range(0, 4);
 		}
 
-		_PlaceSingleKey(KEY.UP, firstKey);
-		_PlaceSingleKey(KEY.DOWN, secondKey);
-		_PlaceSingleKey(KEY.LEFT, thirdKey);
-		_PlaceSingleKey(KEY.RIGHT, fourthKey);
+		_PlaceSingleKey(KEY.UP, firstKey, key == KEY.UP);
+		_PlaceSingleKey(KEY.DOWN, secondKey, key == KEY.DOWN);
+		_PlaceSingleKey(KEY.LEFT, thirdKey, key == KEY.LEFT);
+		_PlaceSingleKey(KEY.RIGHT, fourthKey, key == KEY.RIGHT);
 	}
 
-	private static void _PlaceSingleKey(KEY key, int newId)
+	private static void _PlaceSingleKey(KEY key, int newId, bool toShow)
 	{
 		GameObject keyObject = _Instance.Up;
 
@@ -108,6 +108,25 @@ public class KeyDisplay : MonoBehaviour
 		Vector3 truePosition = keyObject.transform.localPosition;
 		truePosition.z = 0.0f;
 		keyObject.transform.localPosition = truePosition;
+
+		if(toShow)
+		{
+			switch (newId)
+			{
+				case 0:
+					_Instance.UpEmpty.SetActive(false);
+					break;
+				case 1:
+					_Instance.DownEmpty.SetActive(false);
+					break;
+				case 2:
+					_Instance.LeftEmpty.SetActive(false);
+					break;
+				case 3:
+					_Instance.RightEmpty.SetActive(false);
+					break;
+			}
+		}
 	}
 
 	public static void ResetPositions()
@@ -116,14 +135,6 @@ public class KeyDisplay : MonoBehaviour
 		_Instance.Down.transform.position = _Instance.DownEmpty.transform.position;
 		_Instance.Left.transform.position = _Instance.LeftEmpty.transform.position;
 		_Instance.Right.transform.position = _Instance.RightEmpty.transform.position;
-	}
-
-	public static void ShowAll()
-	{
-		_Instance.UpEmpty.SetActive(false);
-		_Instance.DownEmpty.SetActive(false);
-		_Instance.LeftEmpty.SetActive(false);
-		_Instance.RightEmpty.SetActive(false);
 	}
 
 	public static void HideAll()

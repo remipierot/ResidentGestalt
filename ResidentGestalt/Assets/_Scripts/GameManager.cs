@@ -71,9 +71,9 @@ public class GameManager : MonoBehaviour {
 				main_timer.newEvent (time_max);
 			}
 
-			if (_CurrentKey != KEY.INVALID)
+			if (_CurrentKey != KEY.INVALID && !KeyDisplay.IsDisplayed)
 			{
-				//Montrer l'input voulu
+				KeyDisplay.RandomizePositionsAndShow(_CurrentKey);
 			}
 
 			if (ControlManager.InputPressed)
@@ -91,6 +91,8 @@ public class GameManager : MonoBehaviour {
 					_CurrentKey = KEY.INVALID;
 					nik = true;
 				}
+
+				KeyDisplay.HideAll();
 			} 
 			else if (main_timer.oot) {
 				nik = true;
