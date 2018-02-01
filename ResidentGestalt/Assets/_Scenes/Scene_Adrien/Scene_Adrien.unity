@@ -455,8 +455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1a5fae6b2d1bf498484c5738e4f6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer_txt: {fileID: 0}
-  pause: 0
+  time_to_attain: 0
+  t: 0
+  ratio: 0
 --- !u!1 &474938986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,8 +1319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1a5fae6b2d1bf498484c5738e4f6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer_txt: {fileID: 912965458}
-  pause: 0
+  time_to_attain: 0
+  t: 0
+  ratio: 0
 --- !u!222 &912965460
 CanvasRenderer:
   m_ObjectHideFlags: 2

@@ -5,60 +5,46 @@ using TMPro;
 
 public class Timer : MonoBehaviour {
 
-	public TextMeshPro timer_txt;
-	public bool pause = false;
-	int minutes = 0;
-	int secondes = 0;
+	float time_to_attain = 5000.0f;
+	float t = 0;
+	float ratio = 0.0f;
+	float last_time = 0.0f;
+	bool running = true;
 
 	// Use this for initialization
 	void Start () {
-		pause = false;
-		minutes = 0;
-		secondes = 0;
-		timer_txt.text = "00:00";
+		GetComponent<Renderer> ().material.SetFloat ("__Cutoff", 0.0f);
+		last_time = Time.time * 1000;
 	}
 
-	public void startTimer() {
-		if (pause) {
-			pause = false;
-		} 
-		else {
-			minutes = 0;
-			secondes = 0;
+	void Update() {
+
+		if (running) {
+			t = (Time.time * 1000) - last_time;
+			ratio = t / time_to_attain;
+			GetComponent<Renderer> ().material.SetFloat ("__Cutoff", ratio);
+			if (t >= time_to_attain) {
+				running = false;
+
+				// DEBUG
+				newEvent (time_to_attain);	
+			}
 		}
-		InvokeRepeating ("Tick", 0.0f, 1.0f);	
 	}
 
-	public void pauseTimer() {
-		pause = true;
-		CancelInvoke ("Tick");
+	public void newEvent(float tim) {
+		time_to_attain = tim;
+		last_time = Time.time * 1000;
+		t = 0.0f;
+		ratio = 0.0f;
+		GetComponent<Renderer> ().material.SetFloat ("__Cutoff", 0.0f);
 	}
 
-	public void resetTimer() {
-		CancelInvoke ("Tick");
-		pause = false;
-		minutes = 0;
-		secondes = 0;
-		timer_txt.text = "00:00";
+	public void pause() {
+		running = false;
 	}
 
-	void Tick() {
-		// Tick
-		secondes++;
-		if (secondes >= 60) {
-			secondes = 0;
-			minutes++;
-		}
-
-		// Add '0' if < 10
-		if (minutes < 10) {
-			timer_txt.text = "0" + minutes + ":";
-			if (secondes < 10) timer_txt.text += "0" + secondes;
-			else timer_txt.text += secondes;
-		} else {
-			timer_txt.text = "0" + minutes + ":";
-			if (secondes < 10) timer_txt.text += "0" + secondes;
-			else timer_txt.text += secondes;
-		}
+	public void unpause() {
+		running = true;
 	}
 }
