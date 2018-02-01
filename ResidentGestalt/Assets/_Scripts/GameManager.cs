@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Control;
+using TMPro;
 
 public class GameManager : MonoBehaviour {
 
@@ -16,6 +17,14 @@ public class GameManager : MonoBehaviour {
 	public bool nik = false;
 
 	private KEY _CurrentKey { get; set; }
+
+	public Timer main_timer;
+	float time_max = 1000.0f;
+
+	public TextMeshPro high_score_txt;
+	public TextMeshPro score_txt;
+	int score = 0;
+	int high_score = 0;
 
 	//	public DatesBehavior currentDateBehavior;
 
@@ -49,6 +58,8 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
+		score_txt.text = "" + score;
 
 		if (currentDateBehavior.destinationReached) 
 		{
@@ -56,6 +67,8 @@ public class GameManager : MonoBehaviour {
 			if (_CurrentKey == KEY.INVALID && !nik)
 			{
 				_CurrentKey = (KEY)Random.Range(0, System.Enum.GetValues(typeof(KEY)).Length - 1);
+				Debug.Log (_CurrentKey);
+				main_timer.newEvent (time_max);
 			}
 
 			if (_CurrentKey != KEY.INVALID)
@@ -65,9 +78,11 @@ public class GameManager : MonoBehaviour {
 
 			if (ControlManager.InputPressed)
 			{
+				main_timer.pause ();
 				// Pression sur la bonne touche
 				if (ControlManager.IsKeyPressed(_CurrentKey))
 				{
+					score += (int)main_timer.time_left;
 					_CurrentKey = KEY.INVALID;
 				}
 				// Pression sur une mauvaise touche
@@ -76,15 +91,24 @@ public class GameManager : MonoBehaviour {
 					_CurrentKey = KEY.INVALID;
 					nik = true;
 				}
+			} 
+			else if (main_timer.oot) {
+				nik = true;
+				_CurrentKey = KEY.INVALID;
 			}
 
 			if (!nik) 
 			{
-				//OnContinue d'afficher les touches 
-
+				// OnContinue d'afficher les touches 
 			}
 			else 
-			{
+			{				
+				if (score > high_score) {
+					high_score = score;
+					high_score_txt.text = "" + high_score;
+				}
+				score = 0;
+
 				//Il perd patience
 				currentDateBehavior.patience--;
 
