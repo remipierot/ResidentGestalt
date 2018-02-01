@@ -592,6 +592,12 @@ MonoBehaviour:
   main_timer: {fileID: 552693644}
   high_score_txt: {fileID: 1614022444}
   score_txt: {fileID: 914852812}
+  gauche: {fileID: 364830238}
+  droite: {fileID: 558059068}
+  gaucheAdir: {fileID: 8300000, guid: b4429165ee9361d4cbc64242cc742670, type: 3}
+  droiteAdir: {fileID: 8300000, guid: 9669a9d506384b64590b6465cf142867, type: 3}
+  hautAdir: {fileID: 8300000, guid: ad1e9697a15711847a2dc21b3374db08, type: 3}
+  basAdir: {fileID: 8300000, guid: d77c6b20e3f6c644ca32fc2249583d7e, type: 3}
 --- !u!4 &403154821
 Transform:
   m_ObjectHideFlags: 0
