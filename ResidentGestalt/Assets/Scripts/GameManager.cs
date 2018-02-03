@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
 
 	public AudioSource gauche;
 	public AudioSource droite;
-	public AudioClip[] sounds_list;
+	public AudioClip[] sounds_list_xboxpad;
+	public AudioClip[] sounds_list_keyboard;
 
 	public Animator char_animator;
 
@@ -45,6 +46,12 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		if (InputType.Type == Control.Type.TYPE.CONTROLLER) {
+			droite.volume = 0.3f;
+			gauche.volume = 0.3f;
+		}
+
+
 		if (!GameObject.Find("InputUISpot"))
 		{
 			GameObject.Instantiate(Resources.Load("Prefabs\\InputUISpot"));
@@ -103,21 +110,38 @@ public class GameManager : MonoBehaviour
 				main_timer.newEvent (time_max);
 
 				// SON
-				int rand_son = Random.Range (0, sounds_list.Length);
+				int rand_son = Random.Range (0, sounds_list_keyboard.Length);
 				int rand_source = Random.Range (0, 3);
 				if (rand_source == 0) {
-					gauche.clip = sounds_list [rand_son];
-					gauche.Play ();
+					if (InputType.Type == Control.Type.TYPE.KEYBOARD) {
+						gauche.clip = sounds_list_keyboard [rand_son];
+						gauche.Play ();
+					} else {
+						gauche.clip = sounds_list_xboxpad [rand_son];
+						gauche.Play ();
+					}
 				}
 				else if (rand_source == 1) {
-					droite.clip = sounds_list [rand_son];	
-					droite.Play ();				
+					if (InputType.Type == Control.Type.TYPE.KEYBOARD) {
+						droite.clip = sounds_list_keyboard [rand_son];	
+						droite.Play ();		
+					} else {
+						droite.clip = sounds_list_xboxpad [rand_son];
+						droite.Play ();		
+					}
 				}
 				else if (rand_source == 2) {
-					gauche.clip = sounds_list [rand_son];
-					droite.clip = sounds_list [rand_son];	
-					gauche.Play ();		
-					droite.Play ();							
+					if (InputType.Type == Control.Type.TYPE.KEYBOARD) {
+						gauche.clip = sounds_list_keyboard [rand_son];
+						droite.clip = sounds_list_keyboard [rand_son];	
+						gauche.Play ();		
+						droite.Play ();		
+					} else {
+						gauche.clip = sounds_list_xboxpad [rand_son];
+						droite.clip = sounds_list_xboxpad [rand_son];	
+						gauche.Play ();		
+						droite.Play ();		
+					}
 				}
 			}
 

@@ -12,22 +12,24 @@ public class DatesBehavior : MonoBehaviour
 	public bool destinationReached = true;
 	public bool destinationChanged = false;
 
+	Animator m_animator;
+
 	private float destinationReachedTreshold = 1.5f;
 	private NavMeshAgent myNavMesh;
 
 	void Awake()
 	{
 		myNavMesh = this.gameObject.GetComponent<NavMeshAgent> ();
+		m_animator = GetComponent<Animator>(); 
 	}
 
 	void Update()
 	{
-		if(!destinationReached)
-		{			
+		if (!destinationReached) {	
 			float distanceToTarget = Vector3.Distance (this.gameObject.GetComponent<Transform> ().position, myDestination);
-			if(distanceToTarget < destinationReachedTreshold)
+			if (distanceToTarget < destinationReachedTreshold)
 				destinationReached = true;
-		}
+		} 
 	}
 
 	public void setDestination(Vector3 target)

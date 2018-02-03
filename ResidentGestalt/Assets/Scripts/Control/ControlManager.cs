@@ -31,7 +31,7 @@ namespace Control
 			get
 			{
 				return _Controller.Up || _Keyboard.Up;
-			}
+			}	
 		}
 
 		public static bool Down

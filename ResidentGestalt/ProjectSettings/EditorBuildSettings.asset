@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Menu.unity
     guid: a6d89fd950da7d64f9023673743cb270
-  - enabled: 1
-    path: Assets/_Scenes/Axel.unity
+  - enabled: 0
+    path: Assets/_Scenes/DatingRoom.unity
     guid: a11cf98b4fb8fd9468df7b1dc4db7e89
+  - enabled: 1
+    path: Assets/_Scenes/DatingRoom_copy.unity
+    guid: f9997a6c40cd7e648b686a2265fd06b1

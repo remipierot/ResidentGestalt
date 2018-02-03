@@ -6,11 +6,18 @@ public class BlockSambaDancer : MonoBehaviour {
 
 	public Transform real_pos;
 	public Transform samba_hips;
+
 	// Use this for initialization
 	void Start () {
 		
 	}
-	
+
+	void Update() {
+
+
+
+	}
+
 	void OnAnimatorMove()
 	{
 		Animator animator = GetComponent<Animator>(); 
