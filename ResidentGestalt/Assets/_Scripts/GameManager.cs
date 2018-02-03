@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 	public AudioSource droite;
 	public AudioClip[] sounds_list;
 
+	public Animator char_animator;
 
 	//	public DatesBehavior currentDateBehavior;
 
@@ -140,6 +141,7 @@ public class GameManager : MonoBehaviour {
 
 				if(currentDateBehavior.patience <= 0)
 				{
+					char_animator.SetTrigger ("Greet");
 					currentDateBehavior.setDestination (outside.position); // Il Sort //Le Date se suicide
 
 					//On change de Date // Le Date n'est plus en place				
