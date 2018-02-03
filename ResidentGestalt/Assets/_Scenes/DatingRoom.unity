@@ -2077,48 +2077,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 831264232}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &881266409
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4276731286405620, guid: 45372394605a75c4aac27297975d5bca, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276731286405620, guid: 45372394605a75c4aac27297975d5bca, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 5.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276731286405620, guid: 45372394605a75c4aac27297975d5bca, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276731286405620, guid: 45372394605a75c4aac27297975d5bca, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276731286405620, guid: 45372394605a75c4aac27297975d5bca, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0.9428915
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276731286405620, guid: 45372394605a75c4aac27297975d5bca, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276731286405620, guid: 45372394605a75c4aac27297975d5bca, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.33310005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276731286405620, guid: 45372394605a75c4aac27297975d5bca, type: 2}
-      propertyPath: m_RootOrder
-      value: 26
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 45372394605a75c4aac27297975d5bca, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &912554073
 Prefab:
   m_ObjectHideFlags: 0
@@ -2379,7 +2337,7 @@ RectTransform:
   m_Children:
   - {fileID: 1345169533}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: -142.214, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3283,7 +3241,7 @@ RectTransform:
   m_Children:
   - {fileID: 610725801}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: -142.214, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

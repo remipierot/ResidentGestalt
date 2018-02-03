@@ -2,6 +2,12 @@
 
 namespace Control.Type
 {
+	public enum TYPE
+	{
+		KEYBOARD,
+		CONTROLLER
+	}
+
 	public abstract class Controls : MonoBehaviour
 	{
 		public bool Up { get; protected set; }

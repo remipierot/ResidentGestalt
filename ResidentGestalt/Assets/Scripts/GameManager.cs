@@ -3,9 +3,9 @@ using UnityEngine;
 using Control;
 using TMPro;
 
-public class GameManager : MonoBehaviour {
-
-
+public class GameManager : MonoBehaviour
+{
+	private bool _InputHandlerExists = false;
 	public List<GameObject> Dates;
 	public List<Transform> fileDattente;
 
@@ -43,7 +43,32 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+		if (!GameObject.Find("InputUISpot"))
+		{
+			GameObject.Instantiate(Resources.Load("Prefabs\\InputUISpot"));
+		}
+
+		if (!_InputHandlerExists)
+		{
+			GameObject inputHandler;
+
+			if (InputType.Type == Control.Type.TYPE.KEYBOARD)
+			{
+				inputHandler = (GameObject)Instantiate(Resources.Load("Prefabs\\KeyboardUI"));
+			}
+			else
+			{
+				inputHandler = (GameObject)Instantiate(Resources.Load("Prefabs\\ControllerUI"));
+			}
+
+			inputHandler.transform.parent = InputType.Self;
+			inputHandler.transform.localPosition = Vector3.zero;
+			inputHandler.transform.localRotation = Quaternion.identity;
+			inputHandler.transform.localScale = Vector3.one;
+			_InputHandlerExists = true;
+		}
 
 		currentDateIndex = 0;	
 		currentDateBehavior.setDestination (tableDate.position);
@@ -63,8 +88,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		
+
 		score_txt.text = "" + score;
 
 		if (currentDateBehavior.destinationReached) 
